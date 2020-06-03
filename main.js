@@ -16,17 +16,36 @@ c.arc(800, 400, 50, 0, 2 * Math.PI);
 c.stroke();
 
 // TODO follow the instructions in the Canvas Pt. 2 Pre-Lesson to see how to build this project
+
+
+let x = 600;
+let xVelocity = 8;
+let radius = 50;
+let y=250;
+let yVelocity=5;
+
 const animate = () => {
+    // use this special Window method to refresh the Window and call `animate` again, and again, and again...
+    requestAnimationFrame(animate)
+    c.clearRect(0, 0, innerWidth, innerHeight)
+    c.beginPath();
+    c.strokeStyle = "limegreen";
+    c.arc(x, y, 50, 0, 2 * Math.PI);
+    c.stroke();
 
-}
+   
+      if(x + radius > innerWidth || x - radius < 0) {
+        xVelocity = -xVelocity
+      }
+      if(y + radius > innerHeight || y - radius < 0) {
+        yVelocity = -yVelocity
+      }
+    
+    x += xVelocity
+    y += yVelocity
+  }
 
-// animate()
-
-
-
-
-
-
+  animate()
 
 
 
